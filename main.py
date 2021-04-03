@@ -7,6 +7,7 @@ from werkzeug.exceptions import BadRequest
 
 def create_app(env: str) -> Flask:
     app = Flask(__name__)
+    app.env = env
     app.config['CACHE_TYPE'] = 'simple'
     cache = Cache(app)
 
