@@ -5,7 +5,7 @@ from flask_caching import Cache
 from werkzeug.exceptions import BadRequest
 
 
-def create_app():
+def create_app(env: str) -> Flask:
     app = Flask(__name__)
     app.config['CACHE_TYPE'] = 'simple'
     cache = Cache(app)
@@ -37,6 +37,6 @@ def create_app():
 
 
 if __name__ == '__main__':
-    app = create_app()
+    app = create_app("development")
     port = int(os.environ.get('PORT', 8080))
     app.run(host="0.0.0.0", port=port)
